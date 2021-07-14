@@ -123,8 +123,8 @@ void arm_cfft_q15(
         }
     }
 
-    if ( bitReverseFlag )
-        arm_bitreversal_16((uint16_t*)p1,S->bitRevLength,S->pBitRevTable);
+    // if ( bitReverseFlag )
+    //     arm_bitreversal_16((uint16_t*)p1,S->bitRevLength,S->pBitRevTable);
 }
 
 /**
