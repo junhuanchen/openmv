@@ -2327,6 +2327,61 @@ __STATIC_FORCEINLINE uint32_t __SSUB16(uint32_t op1, uint32_t op2)
 #endif /* (__ARM_FEATURE_DSP == 1) */
 /*@} end of group CMSIS_SIMD_intrinsics */
 
+;/*    
+;* @brief  In-place bit reversal function.   
+;* @param[in, out] *pSrc        points to the in-place buffer of unknown 32-bit data type. 
+;* @param[in]      bitRevLen    bit reversal table length
+;* @param[in]      *pBitRevTab  points to bit reversal table.   
+;* @return none.   
+;*/
+__STATIC_FORCEINLINE void arm_bitreversal_32(
+    uint32_t * pSrc,
+    const uint16_t bitRevLen,
+    const uint16_t * pBitRevTable)
+{
+	uint32_t a,b,i,tmp;
+	
+	for(i=0; i<bitRevLen; i++) 
+	{
+		 a = pBitRevTable[2*i];
+		 b = pBitRevTable[2*i + 1];
+
+	//real
+		 tmp = pSrc[a];
+		 pSrc[a] = pSrc[b];
+		 pSrc[b] = tmp;
+
+	//complex
+		 tmp = pSrc[a+1];
+		 pSrc[a+1] = pSrc[b+1];
+		 pSrc[b+1] = tmp;
+	}
+}
+
+__STATIC_FORCEINLINE void arm_bitreversal_16(
+    uint16_t * pSrc,
+    const uint16_t bitRevLen,
+    const uint16_t * pBitRevTable)
+{
+	uint16_t a,b,i,tmp;
+	
+	for(i=0; i<bitRevLen; i++) 
+	{
+		 a = pBitRevTable[2*i];
+		 b = pBitRevTable[2*i + 1];
+
+	//real
+		 tmp = pSrc[a];
+		 pSrc[a] = pSrc[b];
+		 pSrc[b] = tmp;
+
+	//complex
+		 tmp = pSrc[a+1];
+		 pSrc[a+1] = pSrc[b+1];
+		 pSrc[b+1] = tmp;
+	}
+}
+
 #pragma GCC diagnostic pop
 
 #endif /* __CMSIS_GCC_H */
