@@ -31,6 +31,8 @@
 #pragma GCC diagnostic ignored "-Wconversion"
 #pragma GCC diagnostic ignored "-Wunused-parameter"
 
+#include "stdint.h"
+
 /* Fallback for __has_builtin */
 #ifndef __has_builtin
   #define __has_builtin(x) (0)
@@ -921,14 +923,14 @@ __STATIC_FORCEINLINE uint32_t __REV(uint32_t value)
   \param [in]    value  Value to reverse
   \return               Reversed value
  */
-__STATIC_FORCEINLINE uint32_t __REV16(uint32_t value)
-{
-  uint32_t result;
+// __STATIC_FORCEINLINE uint32_t __REV16(uint32_t value)
+// {
+//   uint32_t result;
 
-  __ASM volatile ("rev16 %0, %1" : __CMSIS_GCC_OUT_REG (result) : __CMSIS_GCC_USE_REG (value) );
-  return result;
-}
-
+//   __ASM volatile ("rev16 %0, %1" : __CMSIS_GCC_OUT_REG (result) : __CMSIS_GCC_USE_REG (value) );
+//   return result;
+// }
+#define __REV16          __builtin_bswap16                           /* ToDo:  ARMCC_V6: check if __builtin_bswap16 could be used */
 
 /**
   \brief   Reverse byte order (16 bit)

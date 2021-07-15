@@ -315,37 +315,37 @@
 
 #define __CMSIS_GENERIC         /* disable NVIC and Systick functions */
 
-// #if defined(ARM_MATH_CM7)
-//   #include "core_cm7.h"
-//   #define ARM_MATH_DSP
-// #elif defined (ARM_MATH_CM4)
-//   #include "core_cm4.h"
-//   #define ARM_MATH_DSP
-// #elif defined (ARM_MATH_CM3)
-//   #include "core_cm3.h"
-// #elif defined (ARM_MATH_CM0)
-//   #include "core_cm0.h"
-//   #define ARM_MATH_CM0_FAMILY
-// #elif defined (ARM_MATH_CM0PLUS)
-//   #include "core_cm0plus.h"
-//   #define ARM_MATH_CM0_FAMILY
-// #elif defined (ARM_MATH_ARMV8MBL)
-//   #include "core_armv8mbl.h"
-//   #define ARM_MATH_CM0_FAMILY
-// #elif defined (ARM_MATH_ARMV8MML)
-//   #include "core_armv8mml.h"
-//   #if (defined (__DSP_PRESENT) && (__DSP_PRESENT == 1))
-//     #define ARM_MATH_DSP
-//   #endif
-// #else
-//   #error "Define according the used Cortex core ARM_MATH_CM7, ARM_MATH_CM4, ARM_MATH_CM3, ARM_MATH_CM0PLUS, ARM_MATH_CM0, ARM_MATH_ARMV8MBL, ARM_MATH_ARMV8MML"
-// #endif
+#if defined(ARM_MATH_CM7)
+  #include "core_cm7.h"
+  #define ARM_MATH_DSP
+#elif defined (ARM_MATH_CM4)
+  #include "core_cm4.h"
+  #define ARM_MATH_DSP
+#elif defined (ARM_MATH_CM3)
+  #include "core_cm3.h"
+#elif defined (ARM_MATH_CM0)
+  #include "core_cm0.h"
+  #define ARM_MATH_CM0_FAMILY
+#elif defined (ARM_MATH_CM0PLUS)
+  #include "core_cm0plus.h"
+  #define ARM_MATH_CM0_FAMILY
+#elif defined (ARM_MATH_ARMV8MBL)
+  #include "core_armv8mbl.h"
+  #define ARM_MATH_CM0_FAMILY
+#elif defined (ARM_MATH_ARMV8MML)
+  #include "core_armv8mml.h"
+  #if (defined (__DSP_PRESENT) && (__DSP_PRESENT == 1))
+    #define ARM_MATH_DSP
+  #endif
+#else
+  #include "cmsis_gcc.h"
+  // #error "Define according the used Cortex core ARM_MATH_CM7, ARM_MATH_CM4, ARM_MATH_CM3, ARM_MATH_CM0PLUS, ARM_MATH_CM0, ARM_MATH_ARMV8MBL, ARM_MATH_ARMV8MML"
+#endif
 
 #undef  __CMSIS_GENERIC         /* enable NVIC and Systick functions */
 #include "string.h"
 #include "math.h"
 #include "stdint.h"
-#define __STATIC_INLINE static inline
 #ifdef   __cplusplus
 extern "C"
 {
