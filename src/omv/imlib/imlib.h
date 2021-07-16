@@ -1030,8 +1030,8 @@ int imlib_image_std(image_t *src); // grayscale only
 /* Template Matching */
 void imlib_midpoint_pool(image_t *img_i, image_t *img_o, int x_div, int y_div, const int bias);
 void imlib_mean_pool(image_t *img_i, image_t *img_o, int x_div, int y_div);
-float imlib_template_match_ds(image_t *image, image_t *template, rectangle_t *r);
-float imlib_template_match_ex(image_t *image, image_t *template, rectangle_t *roi, int step, rectangle_t *r);
+float imlib_template_match_ds(image_t *image, image_t *template_tmp, rectangle_t *r);
+float imlib_template_match_ex(image_t *image, image_t *template_tmp, rectangle_t *roi, int step, rectangle_t *r);
 
 /* Clustering functions */
 array_t *cluster_kmeans(array_t *points, int k, cluster_dist_t dist_func);

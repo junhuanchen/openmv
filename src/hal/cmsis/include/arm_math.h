@@ -338,9 +338,6 @@
     #define ARM_MATH_DSP
   #endif
 #else
-  #ifdef ARMV7_V83X
-    #define ARM_MATH_DSP
-  #endif
   #include "cmsis_gcc.h"
   // #error "Define according the used Cortex core ARM_MATH_CM7, ARM_MATH_CM4, ARM_MATH_CM3, ARM_MATH_CM0PLUS, ARM_MATH_CM0, ARM_MATH_ARMV8MBL, ARM_MATH_ARMV8MML"
 #endif
@@ -5850,7 +5847,7 @@ void arm_rfft_fast_f32(
     /* Copy the value of Index pointer that points
      * to the current location from where the input samples to be read */
     rOffset = *readOffset;
-    dst_end = (int32_t) (dst_base + dst_length);
+    dst_end = *(dst_base + dst_length);
 
     /* Loop over the blockSize */
     i = blockSize;
@@ -5950,7 +5947,7 @@ void arm_rfft_fast_f32(
      * to the current location from where the input samples to be read */
     rOffset = *readOffset;
 
-    dst_end = (int32_t) (dst_base + dst_length);
+    dst_end = *(dst_base + dst_length);
 
     /* Loop over the blockSize */
     i = blockSize;
@@ -6050,7 +6047,7 @@ void arm_rfft_fast_f32(
      * to the current location from where the input samples to be read */
     rOffset = *readOffset;
 
-    dst_end = (int32_t) (dst_base + dst_length);
+    dst_end = *(dst_base + dst_length);
 
     /* Loop over the blockSize */
     i = blockSize;
